@@ -28,18 +28,18 @@
       pip:
         name: docker-py
         state: present
-    #Pull Docker Image    
+    # Pull Docker Image    
     - name: Pull docker image
       docker_image:
         name: nrbaskar/hariapp
         tag: "{{DOCKER_TAG}}"
         source: pull
-    #Create a Directory
+    # Create a Directory
     - name: create directory
       file:
         state: directory
         dest: "{{ dest_path }}"
-    #Copy Files
+    # Copy Files
     - name: Copy website to the host
       copy:
         src: ./
@@ -56,10 +56,7 @@
       yum:
         name: nodejs
         state: present
-    - name: Install Angularjs
-      command: sudo npm install express
-    # Install all the necessary Node modules for the project,
-    # using `npm`.
+    # Install all the necessary Node modules for the project,using `npm`.
     - name: Install project dependencies
       yum:
         name: npm
