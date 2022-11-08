@@ -61,16 +61,16 @@
     # Install all the necessary Node modules for the project,
     # using `npm`.
     - name: Install project dependencies
-	  yum:
+      yum:
         name: npm
         state: present
       args:
         chdir: "{{ dest_path }}"
     # Install Forever tool.
-	# Install Angular CLI Using NPM
-	  command: sudo npm install -g @angular/cli
-	# Install Angular CLI Using NPM
-	  command: npm install -g gulp
+    # Install Angular CLI Using NPM
+      command: sudo npm install -g @angular/cli
+    # Install Angular CLI Using NPM
+      command: npm install -g gulp
     # This tool is used to run the Node server in background
     # and keep tracking of the running process
     - name: Install PM2
