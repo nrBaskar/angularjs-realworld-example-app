@@ -4,7 +4,7 @@
   become_user: root
   become: True
   vars:
-    repo_path: nrbaskar/hariapp:{{DOCKER_TAG}}
+    repo_path: nrbaskar/angularjsap:{{DOCKER_TAG}}
     dest_path: /home/ec2-user/{{DOCKER_TAG}}
   tasks:
     # Install python pip
@@ -31,7 +31,7 @@
     # Pull Docker Image    
     - name: Pull docker image
       docker_image:
-        name: nrbaskar/hariapp
+        name: nrbaskar/angularjsap
         tag: "{{DOCKER_TAG}}"
         source: pull
     - name: create directory
@@ -83,6 +83,6 @@
     - name: Kill pm2 service
       command: pm2 kill
     - name: Start service
-      command: pm2 start app.js --name "{{DOCKER_TAG}}-Service"
+      command: pm2 start npm -- start ./server/app.js --name "{{DOCKER_TAG}}-Service"
       args:
         chdir: "{{ dest_path }}"
