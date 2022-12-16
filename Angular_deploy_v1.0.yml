@@ -51,8 +51,10 @@
       shell: 'curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -'
     # If other package are required mention the package name in "name"
     # eg: ngix, curl, wget, apache2, nodejs
-    - name: Install reqired packages
-      command: install nodejs
+     - name: Install reqired packages
+       yum:
+         name: nodejs
+         state: present
     # Install Angular CLI Using NPM
       command: sudo npm install -g @angular/cli
     # Install Angular CLI Using NPM
