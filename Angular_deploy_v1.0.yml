@@ -52,9 +52,7 @@
     # If other package are required mention the package name in "name"
     # eg: ngix, curl, wget, apache2, nodejs
     - name: Install reqired packages
-      yum:
-        name: nodejs
-        state: present
+      command: sudo install nodejs
     # Install Angular CLI Using NPM
       command: sudo npm install -g @angular/cli
     # Install Angular CLI Using NPM
