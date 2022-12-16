@@ -44,7 +44,7 @@
         src: ./
         dest: "{{ dest_path }}"
     # update the system package
-      Command: sudo apt-get upgrade && sudo apt-get update -y
+      command: sudo yum-get upgrade && sudo yum-get update -y
     # Install NodeJS library
     # using multiple shell commands
     - name: Install Nodejs & AngularJS
