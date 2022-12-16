@@ -52,11 +52,9 @@
     # If other package are required mention the package name in "name"
     # eg: ngix, curl, wget, apache2, nodejs
     - name: Install reqired packages
-      yum:
-        name: nodejs
-        state: present
+      command: install nodejs
     # Install all the necessary Node modules for the project,using `npm`.
-      command: npm install
+      command: sudo npm install
       args:
         chdir: "{{ dest_path }}"
     # Install Forever tool.
