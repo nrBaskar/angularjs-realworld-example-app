@@ -52,7 +52,9 @@
     # If other package are required mention the package name in "name"
     # eg: ngix, curl, wget, apache2, nodejs
     - name: Install reqired packages
-      command: install nodejs
+      yum:
+        name: nodejs
+        state: present
     # Install all the necessary Node modules for the project,using `npm`.
       command: sudo npm install
       args:
