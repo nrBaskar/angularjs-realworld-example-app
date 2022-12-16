@@ -52,18 +52,16 @@
     # If other package are required mention the package name in "name"
     # eg: ngix, curl, wget, apache2, nodejs
     - name: Install reqired packages
-      yum:
-        name: nodejs
-        state: present
-    # Install all the necessary Node modules for the project,using `npm`.
-      command: sudo npm install
-      args:
-        chdir: "{{ dest_path }}"
-    # Install Forever tool.
+      command: install nodejs
     # Install Angular CLI Using NPM
       command: sudo npm install -g @angular/cli
     # Install Angular CLI Using NPM
       command: npm install -g gulp
+	# Install all the necessary Node modules for the project,using `npm`.
+      command: sudo npm install
+      args:
+        chdir: "{{ dest_path }}"
+    # Install Forever tool.
     # This tool is used to run the Node server in background
     # and keep tracking of the running process
     - name: Install PM2
