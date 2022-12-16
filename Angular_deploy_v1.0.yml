@@ -56,10 +56,7 @@
         name: nodejs
         state: present
     # Install all the necessary Node modules for the project,using `npm`.
-    - name: Install project dependencies
-      yum:
-        name: npm
-        state: present
+      command: npm install
       args:
         chdir: "{{ dest_path }}"
     # Install Forever tool.
