@@ -39,9 +39,9 @@
         state: directory
         dest: "{{ dest_path }}"
     #Copy Files
-    #- name: Copy website to the host
-     # copy:
-      #  src: ./
+    - name: Copy website to the host
+      copy:
+        src: ./
        # dest: "{{ dest_path }}"
     # update the system package
       command: sudo yum-get upgrade && sudo yum-get update -y
