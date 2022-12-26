@@ -39,7 +39,6 @@
         state: directory
         dest: "{{ dest_path }}"
     #Copy Files
-    
     - name: Copy website to the host
       copy:
         src: ./
