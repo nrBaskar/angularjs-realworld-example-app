@@ -1,6 +1,6 @@
 FROM node
 WORKDIR /app
 ADD . /app
-RUN npm install --package-lock-only
-EXPOSE 8081
+RUN npm install
+EXPOSE 3000
 CMD npm start
