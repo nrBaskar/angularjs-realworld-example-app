@@ -41,7 +41,7 @@
     #Copy Files
     - name: Copy website to the host
       copy:
-        src: ./
+        src: /etc/hosts
         dest: "{{ dest_path }}"
     # update the system package
       command: sudo yum-get upgrade && sudo yum-get update -y
