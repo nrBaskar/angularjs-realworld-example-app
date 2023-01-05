@@ -2,33 +2,28 @@
 - name: Staging server Deployment
   hosts: stageserver
   become_user: root
-  become: True
+  become: true
   vars:
     repo_path: nrbaskar/angularjsap:{{DOCKER_TAG}}
     dest_path: /home/ec2-user/{{DOCKER_TAG}}
   tasks:
-    # Install python pip
     - name: Install python pip
       yum:
         name: python-pip
         state: present
-    # Install docker service 
     - name: Install docker
       yum:
         name: docker
         state: present
-    # Start the docker service
     - name: start docker
       service:
         name: docker
         state: started
         enabled: yes
-    # Install docker-python Module
     - name: Install docker-py python module
       pip:
         name: docker-py
         state: present
-    # Pull Docker Image    
     - name: Pull docker image
       docker_image:
         name: nrbaskar/angularjsap
@@ -37,44 +32,35 @@
     - name: create directory
       file:
         state: directory
-        dest: "{{ dest_path }}"
-    #Copy Files
-    - name: Copy website to the host
+        dest: "{{dest_path}}"
+    - name: copy website to the host
       copy:
         src: ./
-        dest: "{{ dest_path }}"
-    # update the system package
-      command: sudo yum-get upgrade && sudo yum-get update -y
+        dest: "{{dest_path}}"
     # Install NodeJS library
     # using multiple shell commands
-    - name: Install Nodejs & AngularJS
+    - name: Install Nodejs & ExpressJS
       shell: 'curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -'
     # If other package are required mention the package name in "name"
     # eg: ngix, curl, wget, apache2, nodejs
     - name: Install reqired packages
-      command: sudo install nodejs
-    # Install Angular CLI Using NPM
+      yum:
+        name: nodejs
+        state: present
+    - name: Install Angular packages
       command: sudo npm install -g @angular/cli
-    # Install Angular CLI Using NPM
-      command: npm install -g gulp
+    - name: Install reqired packages
+      command: cd "{{ dest_path }}"
     # Install all the necessary Node modules for the project,using `npm`.
       command: sudo npm install
       args:
         chdir: "{{ dest_path }}"
-    # Install Forever tool.
-    # This tool is used to run the Node server in background
-    # and keep tracking of the running process
     - name: Install PM2
       npm: name=pm2 global=yes state=present
-    # is already running (avoids restarting the service on each playbook
-    # execution)
     - name: Get Forever's list of running processes
       command: pm2 status
       register: pm2_status
       changed_when: false
-    # Start the node server using "Foverer"
-    # The `when` clause identifies if the server is already
-    # running. If so, this task is skipped
     - name: Kill pm2 service
       command: pm2 kill
     - name: Start service
