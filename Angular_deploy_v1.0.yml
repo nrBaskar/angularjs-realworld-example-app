@@ -49,6 +49,8 @@
         state: present
     - name: Install Angular packages
       command: sudo npm install -g @angular/cli
+	- name: Install Gulp packages
+      command: sudo npm install -g gulp
     - name: Install reqired packages
       command: cd "{{ dest_path }}"
     # Install all the necessary Node modules for the project,using `npm`.
@@ -64,6 +66,6 @@
     - name: Kill pm2 service
       command: pm2 kill
     - name: Start service
-      command: pm2 start npm -- start ./src/js/app.js --name "{{DOCKER_TAG}}-Service"
+      command: pm2 start npm -- start ./src/js/config/app.constants.js --name "{{DOCKER_TAG}}-Service"
       args:
         chdir: "{{ dest_path }}"
