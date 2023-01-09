@@ -39,7 +39,7 @@
         dest: "{{dest_path}}"
     # Install NodeJS library
     # using multiple shell commands
-    - name: Install Nodejs
+    - name: Install Nodejs & ExpressJS
       shell: 'curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -'
     # If other package are required mention the package name in "name"
     # eg: ngix, curl, wget, apache2, nodejs
