@@ -4,7 +4,7 @@
   become_user: root
   become: true
   vars:
-    repo_path: nrbaskar/angularjsap:{{DOCKER_TAG}}
+    repo_path: nrbaskar/angularjs-frontend:{{DOCKER_TAG}}
     dest_path: /home/ec2-user/{{DOCKER_TAG}}
   tasks:
     - name: Install python pip
