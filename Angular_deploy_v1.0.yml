@@ -49,7 +49,7 @@
         state: present
     - name: Install Angular packages
       command: sudo npm install -g @angular/cli
-	- name: Install Gulp packages
+    - name: Install Gulp packages
       command: sudo npm install -g gulp
   #  - name: Install reqired packages
   #    command: cd "{{ dest_path }}"
