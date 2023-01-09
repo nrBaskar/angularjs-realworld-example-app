@@ -39,11 +39,11 @@
         dest: "{{dest_path}}"
     # Install NodeJS library
     # using multiple shell commands
-    - name: Install Nodejs & ExpressJS
+    - name: Install Nodejs
       shell: 'curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -'
     # If other package are required mention the package name in "name"
     # eg: ngix, curl, wget, apache2, nodejs
-    - name: Install reqired packages
+    - name: Install nodejs packages
       yum:
         name: nodejs
         state: present
@@ -51,8 +51,8 @@
       command: sudo npm install -g @angular/cli
 	- name: Install Gulp packages
       command: sudo npm install -g gulp
-    - name: Install reqired packages
-      command: cd "{{ dest_path }}"
+  #  - name: Install reqired packages
+  #    command: cd "{{ dest_path }}"
     # Install all the necessary Node modules for the project,using `npm`.
       command: sudo npm install
       args:
