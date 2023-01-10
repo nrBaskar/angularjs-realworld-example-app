@@ -1,4 +1,4 @@
-import angular from 'angular.js';
+import angular from 'angular';
 
 // Import our app config files
 import constants  from './config/app.constants';
