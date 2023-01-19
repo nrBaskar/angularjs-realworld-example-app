@@ -43,18 +43,13 @@
       shell: 'curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -'
     # If other package are required mention the package name in "name"
     # eg: ngix, curl, wget, apache2, nodejs
-    - name: Install nodejs packages
+    - name: Install reqired packages
       yum:
         name: nodejs
         state: present
-    - name: Install Angular packages
-      command: sudo npm install -g @angular/cli
-    - name: Install Gulp packages
-      command: sudo npm install -g gulp
+    #- name: Install reqired packages
+     # command: sudo npm install -g @angular/cli
     - name: Install reqired packages
-     # command: cd "{{ dest_path }}"
-     #Install all the necessary Node modules for the project,using `npm`.
-      command: sudo npm install
       command: cd "{{ dest_path }}"
     - name: Install PM2
       npm: name=pm2 global=yes state=present
@@ -65,6 +60,6 @@
     - name: Kill pm2 service
       command: pm2 kill
     - name: Start service
-      command: pm2 start npm -- start ./src/js/config/app.constants.js --name "{{DOCKER_TAG}}-Service"
+      command: pm2 start run.sh --name "{{DOCKER_TAG}}-Service"
       args:
         chdir: "{{ dest_path }}"
