@@ -47,8 +47,8 @@
       yum:
         name: nodejs
         state: present
-    #- name: Install reqired packages
-     # command: sudo npm install -g @angular/cli
+    - name: Install reqired packages
+      command: sudo npm install -g @angular/cli
     - name: Install Gulp packages
       command: sudo npm install -g gulp
     - name: Install reqired packages
