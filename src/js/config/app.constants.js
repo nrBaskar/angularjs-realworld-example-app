@@ -1,6 +1,6 @@
 const AppConstants = {
   // api: 'https://conduit.productionready.io/api',
-  api: 'http://localhost:3000/api',
+  api: 'http://54.172.148.79:3000/api',
   jwtKey: 'jwtToken',
   appName: 'Conduit',
 };
