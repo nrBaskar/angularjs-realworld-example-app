@@ -2,6 +2,7 @@
   "name": "conduit-angularjs",
   "version": "1.0.0",
   "description": "Angular frontend for Conduit",
+  "type": "module"
   "author": "Thinkster",
   "license": "MIT",
   "dependencies": {
