@@ -52,8 +52,9 @@
     - name: Install Gulp packages
       command: sudo npm install -g gulp
     - name: Install reqired packages
+	  command: npm install
       command: cd "{{ dest_path }}"
-    - name: Install PM2
+    - name: npm install pm2@latest -g
       npm: name=pm2 global=yes state=present
     - name: Get Forever's list of running processes
       command: pm2 status
