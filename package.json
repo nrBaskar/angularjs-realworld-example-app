@@ -2,7 +2,7 @@
   "name": "conduit-angularjs",
   "version": "1.0.0",
   "description": "Angular frontend for Conduit",
-  "author": "Thinkster",
+  "main": "gulpfile.js",
   "license": "MIT",
   "dependencies": {
     "angular": "^1.5.0-rc.2",
